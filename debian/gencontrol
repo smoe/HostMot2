@@ -73,6 +73,7 @@ Section: misc
 Priority: extra
 Build-Depends: debhelper
 Maintainer: Jeff Epler <jepler@unpythonic.net>
+Homepage: https://github.com/yaqwsx/HostMot2
 
 """)
 
@@ -81,12 +82,12 @@ if build_all_deb:
 Package: hostmot2-firmware-all
 Architecture: all
 Depends: %s
-Description: Meta-package to install all hostmot2 firmwares
- This is an empty package that depends on all the separately packaged
- firmware images used by EMC2.  If your configuration does not need
- any firmware, you can safely remove this package.  If you know which
- specific hostmot2-firmware-* package you need, you can remove this package
- and install just the one you need.
+Description: Meta-package of all HostMot2 firmwares by Mesa Electronics
+ This is a virtual package that depends on all the separately packaged
+ firmware images by Mesa Electronics for LinuxCNC. If your configuration
+ does not need any firmware of Mesa Electronics, you can safely remove
+ this package. If you know which specific hostmot2-firmware-* package
+ you need, you can remove this package and install just the one you need.
 
 """ % ", ".join("hostmot2-firmware-%s" % cards.get_card(card).path for card in all_cards))
 
@@ -99,7 +100,7 @@ Enhances: linuxcnc, linuxcnc-uspace
 Architecture: all
 Description: HostMot2 firmware images for %(cardname)s
  This package contains HostMot2 firmware images for the %(cardname)s
- "Anything I/O" board.  If you don't use a %(cardname)s you can safely
- remove this package.
+ "Anything I/O" board by Mesa Electronics.  If you don't use that
+ board you can safely remove this package.
 
 """ % {'oldcard': card.path.split("-")[0], 'card': card.path, 'cardname': card.humanname})
